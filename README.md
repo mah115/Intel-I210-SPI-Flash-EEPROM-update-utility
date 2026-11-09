@@ -156,8 +156,4 @@ sudo ./i210flash BDF verify IMG.bin compare flash contents to a file
 
 **`Device … is bound to driver 'igb'`.** The part is already programmed. Use `set_mac.sh` / `ethtool -E` for normal changes. For a raw rewrite, unbind with the printed command first.
 
-## Hardware notes for future revisions
 
-- **Pin 12 (FLSH_SO) security strap.** The I210 samples this pin at power-up. On Rev A it connects directly to the flash with no resistor, so it reads high and NVM security stays enabled. Add a ~3.3 kΩ pull-down to GND on Rev B, as Intel support recommends. If a future image enables security, raw re-flashing may be blocked (FLA bit 6, `FL_LOCKED`, set) until this pull-down is fitted.
-- **Power sequencing.** Power the flash from the same rail as the I210, so the flash is ready when the I210 reads it at power-on.
-- **Flash /WP and /HOLD.** Tie both high.
