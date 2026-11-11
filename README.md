@@ -10,7 +10,7 @@ After the first image is written and the board is cold-booted, the I210 enumerat
 
 | Item | Value |
 |---|---|
-| Host | Jetson Orin NX 16GB on Bedrock carrier BR20166-00 Rev A, JetPack 7 |
+| Host | Jetson Orin NX 16GB |
 | Controller | Intel I210-IT, PCIe address `0007:01:00.0` on that board |
 | Flash | Winbond W25Q80DVUXIE (8 Mbit, JEDEC ID `EF 40 14`) |
 | Image | `Dell_Ford_I210_Copper_NOMNG_8Mb_A2_800007E6.bin` (1 MiB) |
@@ -122,7 +122,7 @@ ip link                                  # find the interface, e.g. enP7p1s0
 sudo ./set_mac.sh enP7p1s0 02:11:22:33:44:55
 ```
 
-Use a unique address for every board: one from Bedrock's OUI if assigned, otherwise a locally administered address (first byte `02`). The script refuses multicast addresses and non-`igb` interfaces.
+Use a unique address for every board: one from org's OUI if assigned, otherwise a locally administered address (first byte `02`). The script refuses multicast addresses and non-`igb` interfaces.
 
 Cold boot again, then confirm with `ip link show enP7p1s0`.
 
